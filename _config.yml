@@ -1,18 +1,15 @@
-title: Lil'Log
-name: "Lilian's Tech Blog"
-author: Lilian Weng
-twitter_username: lilianweng
-baseurl: "/lil-log"
-description: Document my learning notes.
-profile_url: "http://lilianweng.github.io"
+title: Sriharsha's Blog
+name: "Sriharsha's tech blog"
+author: Sriharsha
+twitter_username: Sriharshahatwar
+baseurl: "/Sriharsha-blog"
+description: Document my learning and personal experience.
+profile_url: "http://Sriharsha-hatwar.github.io"
 
 # Build settings
 markdown: kramdown
 highlighter: rouge
 excerpt_separator: <!--more-->
-plugins:
-  - jekyll-feed
-  - jekyll-archives
 exclude:
   - Gemfile
   - Gemfile.lock

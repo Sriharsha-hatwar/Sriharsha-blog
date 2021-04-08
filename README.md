@@ -1,2 +1,2 @@
-# Lil'Log
-Lilian's Blog
+# Sriharsha's log : 
+Sriharsha's Blog
