@@ -5,7 +5,7 @@ title: "First attempt blogging"
 date: 2021-01-26 12:00:00
 tags: machine-learning short-read
 ---
-> In this series of posts on I will be talking about several research papers I personally like. Also, I will be writing about my hiking adventures. Stay tuned for more as I discuss about the required items, what one should be equipped with before starting hiking.
+> In this series of posts on I will be talking about several research papers I personally like. Also, I will be writing about my hiking adventures. Stay tuned for more as I discuss about the required items, what one should be equipped with before starting hiking. - this will be deleted eventually
 
 <!--more-->
 
