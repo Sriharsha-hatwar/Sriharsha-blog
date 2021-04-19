@@ -125,7 +125,7 @@ $$
 
 ## Experiments and results
 
-The hidden state dimention is set to 256 and the vocabulary is of 50k size for both target and source. The word embeddings are not pretrained, but are learnt from scratch in the process. Adagrad is used as the optimizer with lr = 0.15 along with gradient clipping for training. The model training also involves using early stopping on validation set.  The token dimension for source is capped to 400 and the summarized version has been set to 100 tokens with 120 at test time. 
+The hidden state dimension is set to 256 and the vocabulary is of 50k size for both target and source. The word embeddings are not pretrained, but are learnt from scratch in the process. Adagrad is used as the optimizer with lr = 0.15 along with gradient clipping for training. The model training also involves using early stopping on validation set.  The token dimension for source is capped to 400 and the summarized version has been set to 100 tokens with 120 at test time. 
 
 ### Results 
 
