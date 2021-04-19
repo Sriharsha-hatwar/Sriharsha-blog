@@ -40,7 +40,7 @@ This model contains a bidirectional LSTM as an encoder and a unidirectional LSTM
 *Figure 1. Baseline Architecture of Sequence to sequence model with attention*
 {:.image-caption}
 
-The tokens in the passage $$\boldsymbol{w}_i$$ are fed one by one to the encoder ($$\boldsymbol{w}_i$$ can be a Vector representation of token) and the LSTM cell outputs a sequence of hidden states $$\boldsymbol{h}_i$$. And the attention distribution at a time step **t** represented as $$\boldsymbol{a}_t$$ is calculated per the forumala as in [Bahdanau et al. (2015)](https://arxiv.org/abs/1409.0473)
+The tokens in the passage $$\boldsymbol{w}_i$$ are fed one by one to the encoder ($$\boldsymbol{w}_i$$ can be a Vector representation of token) and the LSTM cell outputs a sequence of hidden states $$\boldsymbol{h}_i$$. And the attention distribution at a time step **t** represented as $$\boldsymbol{a}_t$$ is calculated per the formula as in [Bahdanau et al. (2015)](https://arxiv.org/abs/1409.0473)
 
 $$
 \begin{align}
@@ -107,7 +107,7 @@ The loss function is similar to the baseline Seq2seq with attention architecture
 To avoid repetetion in the model output, the authors maintain that a coverage vector $$\boldsymbol{c}_t$$ just helps in that. This vector maintain a sum of attention distribution over all the previous timestep. As $$\boldsymbol{c}_t$$ is an unnormalized vector, it holds the degree to which the token has been attended by the model and hence $$\boldsymbol{c}_0$$ is a zero vector. 
 
 $$ 
-c^t = \sum_{t'=0}^{t-1}a^{t'} \tag{10}
+c_t = \sum_{t'=0}^{t-1}a^{t'} \tag{10}
 $$
 
 This Coverage vector is used in the formula for yielding attention scores at a time step t and hence the formula of equation 1 (refer 1) changes to : 

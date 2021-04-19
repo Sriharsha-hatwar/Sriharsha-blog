@@ -27,7 +27,7 @@ Currently for transformer models like BERT which is a MLM (Masked Language Model
 {:.image-caption}
 
 ### Pre-training Objective
-For comparision along with the GSG, the authors also have used the masked language modelling objective (masking some tokens) in conjuction, isolation as well. In GSG, the gap sentence which are masked are represented as [MASK1] for the model and the masked sentence form a pseudo summary for the doc. Depending upon the $$GSR$$ (Gap sentence ratio) sentences are seleted to be masked. The document is represented by $$\boldsymbol{D}$$ = $$\{x_i\}_n$$ which comprimises of $$\boldsymbol{n}$$ sentences and let $$\boldsymbol{m}$$ be the number or sentences to be masked.
+For comparision along with the GSG, the authors also have used the masked language modelling objective (masking some tokens) in conjuction, isolation as well. In GSG, the gap sentence which are masked are represented as [MASK1] for the model and the masked sentence form a pseudo summary for the doc. Depending upon the $$GSR$$ (Gap sentence ratio) sentences are selected to be masked. The document is represented by $$\boldsymbol{D}$$ = $$\{x_i\}_n$$ which comprimises of $$\boldsymbol{n}$$ sentences and let $$\boldsymbol{m}$$ be the number or sentences to be masked.
 
 There are three important ways we can choose a sentence for GSG 
 
@@ -52,21 +52,21 @@ For pretraining the models, the authors used two corpus :
 
 ## Experiments and Results
 
-For downstream tasks, if there were no split : 80/10/10(training/validation/testing) was the ratio used modelling. For ablation study, the model was intially trained on an architecture having 223M parameters - **PEGASUS**$$_{BASE}$$ which had *L* = 12(No. of transformer layer = 12), *H* = 768 (No. of embedding dim), *A* = 12 (No. of self attention head) and *F* = 3072 (Feed Forward layer size) which was tested on 4 of 12 datasets with a batch size of 256 and then moved to scale it to a larger model **PEGASUS**$$_{LARGE}$$ which had *H* = 1024, *L* = 16, *F* = 4096 and *A* = 16 with a batch size of 8192. Sinusoidal positional encoding is used for maintaining the token postion. Adafactor with square root learning decay along with a dropout of 0.1 is used for training these models.
+For downstream tasks, if there were no split : 80/10/10 (training/validation/testing) was the ratio used for modelling. For ablation study, the model was intially trained on an architecture having 223M parameters - **PEGASUS**$$_{BASE}$$ which had *L* = 12 (No. of transformer layer = 12), *H* = 768 (No. of embedding dim), *A* = 12 (No. of self attention head) and *F* = 3072 (Feed Forward layer size) which was tested on 4 of 12 datasets with a batch size of 256 and then moved to scale it to a larger model **PEGASUS**$$_{LARGE}$$ which had *H* = 1024, *L* = 16, *F* = 4096 and *A* = 16 with a batch size of 8192. Sinusoidal positional encoding is used for maintaining the token postion. Adafactor with square root learning decay along with a dropout of 0.1 is used for training these models.
 
-For ablation study, greedy decoding was used and while training **PEGASUS**$$_{LARGE}$$ the paper switches to Beam search with a length penalty $$\alpha$$ is used.
+For ablation study, greedy decoding was used and while training **PEGASUS**$$_{LARGE}$$ the paper switches to Beam search with a length penalty $$\alpha$$.
 
 ### Ablation of **PEGASUS**$$_{BASE}$$
 
 Some of the Ablation outcomes : :
-1. For training **PEGASUS**$$_{LARGE}$$ large Ind-Orig(Individual score - Orignal implementaion) sentence selection was used.
+1. For training **PEGASUS**$$_{LARGE}$$ large Ind-Orig (Individual score - Orignal implementaion) sentence selection was used.
 2. GSR (Gap sentence ratio) for **PEGASUS**$$_{LARGE}$$  was set at 30%.
 3. No MLM training was used for **PEGASUS**$$_{LARGE}$$.
-4. Effect of Vocabulary : In comparing BPE (Byte pair encoding) and SentencePiece Unigram, for non news articles unigram worked better. For **PEGASUS**$$_{LARGE}$$ Unigram with 96K vocabulary size was utilized.
+4. Effect of Vocabulary : In comparing BPE (Byte pair encoding) and SentencePiece Unigram, for non news articles unigram worked better. For **PEGASUS**$$_{LARGE}$$ Unigram with 96K vocabulary size was used.
 
 ### Larger model Results
 
-The larger model was trained for  500k steps having 528M parameters while adapting the outcome of ablation study, these were the results 
+The larger model was trained for  500k steps having 528M parameters while adapting the outcome of ablation study, these were the results. 
 Best ROUGE numbers on each dataset and numbers within 0.15 of the best numbers are bolded.
 
 ![Pointer-generator network*]({{ '/assets/images/Large-model-result-pegasus.png' | relative_url }})
