@@ -1,23 +1,25 @@
+<!--
 <header class="site-header" role="banner" id='header-bar'>
 
     <div class="wrapper">
         {% assign default_paths = site.pages | map: "path" %}
         <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
 
-        <!-- <nav class="site-nav">
+        comment this nav
+         <nav class="site-nav">
             <a class="page-link" href="http://lilianweng.github.io" target="_blank">&#x1f349; About</a>
-        </nav> -->
+        
         <nav class="site-nav">
             <a class="page-link" href="{{ '/contact.html' | relative_url }}">Contact</a>
         </nav>
-        <!--
+        comment this.
         <nav class="site-nav">
             <a class="page-link" href="{{ '/FAQ.html' | relative_url }}">FAQ</a>
         </nav>
-        -->
-        <!-- <nav class="site-nav">
+        
+         <nav class="site-nav">
             <a class="page-link" href="{{ '/log.html' | relative_url }}">&#x231b; Log</a>
-        </nav> -->
+        
         <nav class="site-nav">
             <a class="page-link" href="{{ '/archive.html' | relative_url }}"> Archive</a>
         </nav>
@@ -25,3 +27,19 @@
     </div>
 
 </header>
+
+<!--    Made by Erik Terwan    -->
+<!--   24th of November 2015   -->
+<!--        MIT License        -->
+<header class="header">
+    <div class="wrapper">
+        {% assign default_paths = site.pages | map: "path" %}
+        <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul class="menu">
+        <li><a href="{{ '/archive.html' | relative_url }}">Archive</a></li>
+        <li><a href="{{ '/contact.html' | relative_url }}">Contact</a></li>
+        </ul>
+    </div>
+  </header>
