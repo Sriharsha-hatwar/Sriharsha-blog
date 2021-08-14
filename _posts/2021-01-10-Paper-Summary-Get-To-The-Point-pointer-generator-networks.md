@@ -2,6 +2,7 @@
 layout: post
 comments: true
 title: "<i>Paper Dissection</i> : Get To The Point: Summarization with Pointer-Generator Networks"
+header-title : "Paper Dissection: Get To The Point: Summarization with Pointer-Generator Networks"
 date: 2021-01-10 12:00:00
 tags: Deep-learning nlp short-read
 ---

@@ -2,6 +2,7 @@
 layout: post
 comments: true
 title: "<i>Paper Dissection</i> : PEGASUS: Pre-training with Extracted Gap-sentences for Abstractive Summarization"
+header-title: "Paper Dissection : PEGASUS: Pre-training with Extracted Gap-sentences for Abstractive Summarization"
 date: 2021-02-15 12:00:00
 tags: Deep-learning nlp short-read
 ---

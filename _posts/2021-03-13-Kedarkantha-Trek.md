@@ -2,6 +2,7 @@
 layout: post
 comments: true
 title: "Kedarkantha trek"
+header-title: "Kedarkantha trek"
 date: 2021-03-26 12:00:00
 tags: personal long-read
 ---
@@ -61,12 +62,32 @@ There were three commands that we were asked to follow in addition to one to jus
 
 We then returned to our zostel to collect the main luggage that we had left. As the rafting had enervated us, we decided to have a sumptuous lunch at GoStops and then left for Dehradun in a TT for the day as a long journey to sankri was awaiting us the next day early in the morning. As soon as we reached, we went out to explore Dehradun and decided to stop at Kumar sweets. As it was already very close to its closing time, all the items that they gave were done hastily and it did not match the expectation we had. Some of us even named it The A2B (Adyar Anand Bhavan) of Dehradun. As most of us were still hungry, we decided to stop at another Momos point which was just over the building and this is where all the fun started.  Along with the momos being tasty, the Bluetooth speakers that they had provided us lifted our moods and helped us forget about the incident which happened at Rishikesh as we started playing Kannada songs and danced to the tune of it.  Overall it was an extremely memorable day after which we left for the hotel and slept early to get ready for the early morning travel to sankri the next day.
 
+![Group pic after the dance at the momos point]({{ '/assets/images/Group-pic-at-momos-point.jpg' | relative_url }})
+{: style="width: 90%;" class="center"}
+*Group pic after the dance at the momos point*
+{:.image-caption}
+
 
 ### Day 4 - Travel to Sankri
-Our TT came exactly at 5:50 AM on Tuesday, 16th of Mar. After getting ready, we had a cup of tea from the nearby hotel stall and started our journey at 6:00 AM. The roads along the way were narrow along the cliff and the views along the way were magical and terrifying at the same time. We stopped for breakfast at Mussoorie and ate the famous north Indian breakfast, Aloo paratha on the way. Before lunch, we stopped at a rock point which was on the banks of the river Yamuna and took several pics. For our lunch, we stopped at this extremely lovable daba by an aunty who won our hearts as we ate our hearts out in Harki dun valley. later, we reached Sankri at around 4:30 PM - 5:00 PM. We got freshened up at the rooms given and assembled at the dining area where our Trek leader mannu bhayya briefed us about our trek guide team consisting of himself and two others: Sanjeev bhayya and Ms. Sunita. He also enquired us about our fitness level and briefed us on the itinerary of the trek, the do's and don'ts on the trek, the clothing required, etc. After the meeting, we had our dinner and we were extremely surprised by the taste and quality of the food provided by the TTH people. After dinner, we got to know about a cafe which provided wifi for people buying there. We utilized this to send messages to our family and said we will not get the signal for the next 4 days. As the temperature had started falling, we layered up and went to bed after getting our only essential items in the trekking bag and separated the other items as "left luggage" which had to be dropped off before leaving early morning.
+Our TT came at around 5:50 AM on Tuesday, 16th of Mar. After getting ready, we had a cup of tea from the nearby hotel stall and started our journey at 6:00 AM. The roads along the way were narrow and the cliffs were steep which made the views even more breathtaking and terrifying at the same time. We stopped for breakfast at Mussoorie and had the famous north Indian breakfast, Aloo paratha. Before lunch, we stopped at a rock point which was on the banks of the river Yamuna and took several pics. For our lunch, we stopped at this extremely lovable daba by an aunty who won our hearts as we ate our hearts out in Harki dun valley. later, we reached Sankri at around 4:30 PM - 5:00 PM. We got freshened up at the rooms given and assembled at the dining area where our Trek leader Mannu bhayya briefed us about our trek guide team consisting of himself and two others: Sanjeev bhayya and Ms. Sunita. He also enquired about our fitness level and briefed us on the itinerary of the trek, the do's and don'ts on the trek, the clothing required, etc. After the meeting, we had our dinner and we were extremely surprised by the taste and quality of the food given by the TTH people. After dinner, while shopping for some of the forgotten/needed items, we got to know about a cafe that provided wifi for people who bought drinks/food from them. We utilized this to send messages to our family and informed them about the possibility of having no signal for the next 4 days. As the temperature had started falling, we layered up and went to bed after segregating the only essentials required for the next 4 days of the trek and separated the other items as "left luggage" which then had to be dropped off before leaving early the next morning.
+
+![Group pic after the dance at the momos point]({{ '/assets/images/Scenes-along-the-way-to-sankri-1.jpg' | relative_url }})
+{: style="width: 90%;" class="center"}
+*Group pic after the dance at the momos point*
+{:.image-caption}
+
+![Group pic after the dance at the momos point]({{ '/assets/images/Scenes-along-the-way-to-sankri-2.jpg'| relative_url }})
+{: style="width: 90%;" class="center"}
+*Group pic after the dance at the momos point*
+{:.image-caption}
+
+![Group pic after the dance at the momos point]({{ '/assets/images/Scenes-along-the-way-to-sankri-3.jpg' | relative_url }})
+{: style="width: 90%;" class="center"}
+*Group pic after the dance at the momos point*
+{:.image-caption}
 
 ### Day 5 - First day of trek
-The plan for the first day was to have our tea at 7:00 AM. Sipping the lemon tea which was given, the scenery just outside the dining camp at sankri camp was nothing short of magnificent, we were able to see some of the most beautiful valleys, snow-covered top of several summit peaks. Our trek was scheduled to start at 9:00 AM after the 8:00 AM breakfast. However, we started 10 min late and we were on foot at 9:15 AM where we left from Sankri to reach Juda ki talab.
+The plan for the first day was to have our tea at 7:00 AM. While sipping the lemon tea, the scenery just outside the dining camp at sankri camp was nothing short of magnificent, we were able to see some of the most beautiful valleys, snow-covered top of several summit peaks. Our trek was scheduled to start at 9:00 AM after the 8:00 AM breakfast. However, we started 15 min late and we were on foot at 9:15 AM to reach the first campsite Juda ki Talab from the sankri base camp. 
 
 ![Group pic from Sankri base camp on our first day]({{ '/assets/images/Starting-from-sankri.jpg' | relative_url }})
 {: style="width: 90%;" class="center"}
@@ -80,7 +101,7 @@ Our first day of the trek was nothing short of breathtaking, the route with whic
 *View from the first day hike*
 {:.image-caption}
 
-After a good lunch, we started the acclimatization walk. After reaching the higher altitude where snow was plentiful, we played cricket with our hiking pole with snowballs as our trek leader mannu bhayya explained about the naturally formed rock caves around the place.
+After a good lunch, we started the acclimatization walk. After reaching the higher altitude where snow was plentiful, we played cricket with our hiking pole with snowballs as our trek leader Mannu bhayya explained about the naturally formed rock caves around the place.
 
 ![Natural rock cave on our acclimitization walk at Juda ki talab]({{ '/assets/images/Group-pic-natural-rock.jpg' | relative_url }})
 {: style="width: 90%;" class="center"}
@@ -89,7 +110,7 @@ After a good lunch, we started the acclimatization walk. After reaching the high
 
 
 ### Day 6 - Trek to Kedarkanta Base Camp
-As the distance to the Kedarkantha base camp was less, our trek started a bit late as we had our tea at 8:00 AM. Everyone was up and as the temperature was around 0-5C, it was extremely difficult to use the water to wash our face/brush our teeth. Also, everyone felt victorious after attending their first nature call in the woods XD. After some warmup and breakfast consisting of pasta, we started to Kedarkantha base camp at 10:00 AM. The path considerably was much steeper than our first day and the snow patches were starting to get noticed more and more as we were covering altitude. Also as we started climbing the density of pine trees started reducing. We reached Kedarkantha base camp very early as the distance was just around 2.5kms. As there were fewer pine trees at the Kedarkanta base camp,  we were able to witness the complete 360$$^\circ$$ view. 
+As the distance to the Kedarkantha base camp was less, our trek started a bit late as we had our tea at 8:00 AM. Everyone was up and as the temperature was around 0-5C, it was extremely difficult to use the water to wash our face or even brush our teeth. Also, everyone felt victorious after attending their first nature call in the woods XD. After some warmup and breakfast consisting of pasta, we started to Kedarkantha base camp at 10:00 AM. The path considerably was much steeper than our first day and the snow patches were starting to get noticed more and more as we were covering altitude. Also as we started climbing the density of pine trees started reducing. We reached Kedarkantha base camp very early as the distance was just around 2.5kms. As there were fewer pine trees at the Kedarkanta base camp,  we were able to witness the complete 360$$^\circ$$ view. 
 
 ![Sighting of kedarkanta peak from base camp]({{ '/assets/images/Kedarkantha-summit-view-base-camp.jpg' | relative_url }})
 {: style="width: 90%;" class="center"}
