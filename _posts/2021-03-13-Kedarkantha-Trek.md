@@ -73,17 +73,17 @@ Our TT came at around 5:50 AM on Tuesday, 16th of Mar. After getting ready, we h
 
 ![Group pic after the dance at the momos point]({{ '/assets/images/Scenes-along-the-way-to-sankri-1.jpg' | relative_url }})
 {: style="width: 90%;" class="center"}
-*Group pic after the dance at the momos point*
+*Scenic view along the route to sankri*
 {:.image-caption}
 
 ![Group pic after the dance at the momos point]({{ '/assets/images/Scenes-along-the-way-to-sankri-2.jpg'| relative_url }})
 {: style="width: 90%;" class="center"}
-*Group pic after the dance at the momos point*
+*Scenic view along the route to sankri*
 {:.image-caption}
 
 ![Group pic after the dance at the momos point]({{ '/assets/images/Scenes-along-the-way-to-sankri-3.jpg' | relative_url }})
 {: style="width: 90%;" class="center"}
-*Group pic after the dance at the momos point*
+*Scenic view along the route to sankri*
 {:.image-caption}
 
 ### Day 5 - First day of trek
