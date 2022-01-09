@@ -14,14 +14,14 @@ tags: Deep-learning nlp short-read
 {:toc}
 
 ## Motivation 
-Transformer based language models [1] Vaswani et.al, 2017 have stirred the transfer based learning in NLP and has helped greatly improve the performance of several NLP tasks. Pretraining a Language model on the huge amount of text on the web forms the basic step for the same. However, research on steering a Language model to output fine grained control over the provided content/sentiment is still being explored and has a great potential to improve quality of search engines. This paper [open-review-link](https://openreview.net/forum?id=VD_ozqvBy4W) proposes a content conditioner, which when trained auto-regressively alongside a Large pretrained language model (like GPT-2) provides the capability to control text at a fine grained level.
+Transformer-based language models [1] Vaswani et.al, 2017 have stirred transfer-based learning in NLP and has improved the performance of several NLP tasks. Pretraining a Language model on a large amount of text on the web forms the first step. Research on steering a pretrained Language model to output fine-grained control over the provided content/sentiment is still under exploration and has great potential to improve the quality of search engines. This paper [open-review-link](https://openreview.net/forum?id=VD_ozqvBy4W) proposes a transformer block - A content conditioner. This block, when trained auto-regressively alongside a Large pretrained language model (like GPT-2) provides the capability to control text at a fine-grained level.
 
 ## Related concepts
-Some of the concepts which are required for understanding the paper involve  language models, self-attention, expected value, GAN loss.
+Some of the concepts which are required for understanding the paper involve language models, self-attention, expected value, GAN loss.
 
 ## Method of solving
 ### Problem representation 
-In text generation, given a prompt text $$x_{:t-1}$$ of length $$t-1$$, where $$x_i$$ represents the token at $$i^{th}$$ position and $$x_{:t-1}$$ = {$$x_1 ... , x_{t-1}$$}, the following text $$x_t,...x_l$$ of length $$l-t+1$$ which can be  generated auto-regressively, can be represented as : 
+In text generation, given a prompt text $$x_{:t-1}$$ of length $$t-1$$, where $$x_i$$ represents the token at $$i^{th}$$ position and $$x_{:t-1}$$ = {$$x_1 ... , x_{t-1}$$}, the following text $$x_t,...x_l$$ of length $$l-t+1$$ which can be generated auto-regressively, can be represented as : 
 
 $$
 \begin{align}
@@ -29,7 +29,7 @@ p(x_t ... , x_l | x_1,...,x_{t-1}) &= \prod_{i = t}^{l} p(x_i | x_l,..., x_{i-1}
 \end{align}
 $$
 
-Now, for controlled text generation conditioned on an attributed/ a content can be represented by the conditional probablity as : 
+Now, for controlled text generation conditioned on an attributed/ a content can be represented by the conditional probability as : 
 
 $$
 \begin{align}
@@ -62,7 +62,7 @@ o_{t} = LM_{\beta}(h_{:t-1})
 $$
 
 
-These $$LM_{\alpha}$$ and $$LM_{\beta}$$ if joined comprises a GPT-2 Model [2] Radford et.al, 2019. Clearly we can see that, by utlizing this midpoint representation, we can control next token logit - <strong>$$o$$ </strong>. Per Figure 1, we utilize the CoCon block to combine the intermediate representation  $$h_{t-1}$$ and the representation of the content - $$h_{:l_c}$$ from $$LM_{\alpha}$$ (where, $$l_c$$ is the length of the content **c**) on which the prompt is to be conditoned on to generate newly created intermediate embeddings $$h^{'}_{t-1}$$. 
+These $$LM_{\alpha}$$ and $$LM_{\beta}$$ if joined, comprise a GPT-2 Model [2] Radford et.al, 2019. Clearly we can see that, by utilizing this midpoint representation, we can control the next token logit - <strong>$$o$$ </strong>. Per Figure 1, we utilize the CoCon block to combine the intermediate representation  $$h_{t-1}$$ and the representation of the content - $$h_{:l_c}$$ from $$LM_{\alpha}$$ (where, $$l_c$$ is the length of the content **c**) on which the prompt is to be conditioned on to generate newly created intermediate embeddings $$h^{'}_{t-1}$$. 
 
 $$
 h^{'}_{t-1} = CoCon(h_{:l_c}, h_{t-1})
@@ -91,7 +91,7 @@ $$
     V^{'} = [V^c, V] \in \mathbb{R}^{(l_c + t - 1) \times d} \tag{2}
 $$
 
-By utilizing these vectors, the CoCon block creates the attention weights $$W = QK^{'T} \in \mathbb{R}^{(t - 1) \times (l_{c} + (t - 1))}$$. The attention weights then will be mutiplied with the value vectors to create the embeddings. These embeddings will be fed to a feed-forward layer to get the final output, $$h^{'}_{t-1}$$. 
+By utilizing these vectors, the CoCon block creates the attention weights $$W = QK^{'T} \in \mathbb{R}^{(t - 1) \times (l_{c} + (t - 1))}$$. The attention weights then will be multiplied with the value vectors to create the embeddings. These embeddings will be fed to a feed-forward layer to get the final output, $$h^{'}_{t-1}$$. 
 
 $$
     A = Softmax(QK^{'T})V^{'} \in \mathbb{R}^{(t - 1) \times d }
@@ -107,24 +107,26 @@ $$
     K^{'} = [K^{c^1} K^{c^2} ... K^{c^n}; K] \; \;   \; \; V^{'} = [V^{c^1} V^{c^2} ... V^{c^n}; V]  
 $$
 
-and the flexibilty of the CoCon enables the rest of the equation to be the same.
+and the flexibility of the CoCon enables the rest of the equation to be the same. 
 
-The final representation, $$h^{'}_{t-1}$$ will be combined with the representation prior to $$(t-1)$$ i.e $$h_{:t-2}$$ in $$LM_{\beta}$$  which outputs a token logit $$\widetilde{o}_t $$ and so on to have a conditoned output sequence.
+Additionally, $$\tau_{content}$$ can be used to vary the extent of content conditioning by biasing the attention weights $$W = QK^{'T}$$ that corresponds to content input (c) ($$W_{:,:,l_c} \in  \mathbb{R}^{(t-1 \times l_c)} $$). Making $$\tau_{content}$$ more positive the generated text aligns more with the content input and making $$\tau_{content}$$ negative can make the CoCon block to be not too far away from an Unconditioned LM. 
+
+The final representation, $$h^{'}_{t-1}$$ will be combined with the representation prior to $$(t-1)$$ i.e $$h_{:t-2}$$ in $$LM_{\beta}$$  which outputs a token logit $$\widetilde{o}_t $$ and so on to have a conditioned output sequence.
 
 $$
     \widetilde{o}_t = LM_{\beta}([h_{t-2}, h^{'}_{t-1}]) \tag{3}
 $$
 
-The softmax on $$\widetilde{o}_t$$ provides the token $$\widetilde{x}_t$$ different from $$x_t$$ as it has been conditoned on content input $$c$$.
+The softmax on $$\widetilde{o}_t$$ provides the token $$\widetilde{x}_t$$ different from $$x_t$$ as it has been conditioned on content input $$c$$.
 
 $$
     p_{\theta, \psi}(\widetilde{x}_t|c, x_{t-1}) = Softmax(\widetilde{o}_t)
 $$
 
-here $$\theta$$ represents the CoCon block parameters and $$\psi$$ represents the LM parameters.
+Here, $$\theta$$ represents the CoCon block parameters and $$\psi$$ represents the LM parameters.
 
 ### Model training
-CoCon block is trained self-supervisedly with the output generated by the Language model which is used in adjacent to the CoCon block. Given any text sequence of length $$l$$ $$x = [x_1, x_2, .... x_{t-1}, x_{t}, .... , x_l]$$, the sequence can be divided into two parts where, 
+CoCon block is trained self-supervisedly with the output generated by the Language model (LM whic is used in adjacent to the CoCon block). Given any text $$x$$ of sequence length $$l$$, $$x = [x_1, x_2, .... x_{t-1}, x_{t}, .... , x_l]$$, the sequence can be divided into two parts, 
 
 $$
     x^a = {x_1, ... x_{t-1}}
@@ -134,36 +136,41 @@ $$
     x^b = {x_{t}, ... , x_l}
 $$
 
-Where, $$x = [x^a; x^b]$$. In real world, there are multiple sentences that can follow $$x^a$$. So without the information about $$x_b$$ the probablity to re-construct $$x^b$$ from $$x^a$$ is very low. To alleviate and incorporate conditional modeling, the paper introduces four losses : 
+Where, $$x = [x^a; x^b]$$. In the real world, there are multiple sentences that can follow $$x^a$$. So without the information about $$x_b$$ the probability to re-construct $$x^b$$ from $$x^a$$ is very low. To alleviate and incorporate conditional modeling, the paper introduces four losses : 
 
 **Self reconstruction loss:**
-For reconstrucing original sentence $$x$$, the cocon block is provided with intermediate representation of both $$x$$ and $$c = x_b$$.
+For reconstructing the original sentence $$x$$, the cocon block is provided with an intermediate representation of both $$x$$ and $$c = x_b$$.
 
 $$
     \mathbf{h_{:l}} = LM_{\alpha}(x_{:l}), \; \; \; \mathbf{h^{(c)}_{:l_c}} = LM_{\alpha}(x_{t:l})
 $$
 
-The CoCon block then, by utilizing the representation $$\mathbf{h^{(c)}_{:l_c}}$$ generates the intermediate representation auto-regressively $$\forall i \geq t-1$$. (Here all the represenation after $$i$$ will be masked out so that CoCon does not see the future terms in $$h_{:l}$$)
+The CoCon block then, by utilizing the representation $$\mathbf{h^{(c)}_{:l_c}}$$ generates the intermediate representation auto-regressively $$\forall i \geq t-1$$. (Here all the representation after $$i$$ will be masked out so that CoCon does not see the future terms in $$h_{:l}$$)
 
 
 $$
     h^{'}_{i} = CoCon(h^{(c)}_{:l_c},  h_{:i}), \; \; \; \forall i \geq t-1
 $$
 
-Simlar to (3), they generate the next token logit from $$LM_{\beta}$$ after applying the Softmax operation.
+Similar to (3), they generate the next token logit from $$LM_{\beta}$$ after applying the Softmax operation.
 
 $$
-    \widetilde{o}_{i+1} = LM_{\beta}([h_{:t-2}, \; h^{'}_{t:i}]),  \; \; \; p_{\theta, \psi}(\widetilde{x}_{i+1}|c, x_{:i}) = Softmax(\widetilde{o}_{i+1}), \; \; \; \forall i \geq t-1
+    \widetilde{o}_{i+1} = LM_{\beta}([h_{:t-2}, \; h^{'}_{t-1:i}]),  \; \; \; p_{\theta, \psi}(\widetilde{x}_{i+1}|c, x_{:i}) = Softmax(\widetilde{o}_{i+1}), \; \; \; \forall i \geq t-1
 $$
 
-Now the training loss for self restruction is the sum of log likelihood loss $$\forall i \in (t, \ l) $$ where, the conditioned text is the second part of text sequence $$x$$ i.e $$x_b$$ and mathematically represented as: 
+![Self reconstruction loss with example text*]({{ '/assets/images/CoCon-self-reconstruction.png' | relative_url }})
+{: style="width: 100%;" class="center"}
+*Figure 2. Example representing Self-reconstruction loss*
+{:.image-caption} 
+
+Now the training loss for Self-reconstruction is the sum of log likelihood loss $$\forall i \in (t, \ l) $$ where, the conditioned text is the second part of text sequence $$x$$ i.e $$x_b$$ and mathematically represented as: 
 
 $$
     {L_{self}} = - \sum_{i = t}^{l}log \ p_{\psi, \theta}(x_i | (c = x_b), \{x_1, ..., x_{i-1}\})
 $$
 
 **Null content loss**
-The main aim of this loss is to make the text generation as fluent as possible. This loss removes the hard dependency of the presence of content in generating the text from the prompt text (In any absence of content). 
+The main aim of this loss is to make the text generation as fluent as possible. This loss removes the hard dependency of the presence of content in generating the text from the prompt text (In any absence of content) and makes the CoCon to generate text as similar to an unconditioned LM.
 
 $$
     {L_{null}} = - \sum_{i = t}^{l}log \ p_{\psi, \theta}(x_i | (c = \emptyset), \{x_1, ..., x_{i-1}\})
@@ -177,7 +184,7 @@ $$
 $$
 
 where, $$c$$ is the content, and $$p$$ is the prompt text. To make the CoCon block more generalizable for text where both $$c$$ and $$p$$ are from
-divergent sources, the paper uses two sentences $$x$$ and $$x^{'}$$ to creates two pairs of $$c$$ and $$p$$ respectively. Splitting both the text sequence x and x' : 
+divergent sources, the paper uses two sentences $$x$$ and $$x^{'}$$ to create two pairs of $$c$$ and $$p$$ respectively. Splitting both the text sequence x and x' : 
 
 $$
     x = [x^{a}; x^{b}]
@@ -200,7 +207,7 @@ $$
     y_{cycle} = f_{\theta, \psi}((c = y_{x, x^{'}}), p = x^{a})
 $$
 
-now, $$x_b$$ acts as a training label for the generated $$y_{cycle}$$ and provides us the cycle reconstruciton loss for training the CoCon block. 
+Now, $$x_b$$ acts as a training label for the generated $$y_{cycle}$$ and provides us the Cycle reconstruction loss for training the CoCon block. 
 
 $$
 
@@ -208,15 +215,20 @@ L_{cycle} = - \sum_{i = t}^{l}log \ p_{\psi, \theta}(y_{cycle} = x^{b} | (c = y_
 
 $$
 
+![cycle reconstruction loss with example text*]({{ '/assets/images/cocon-cycle-reconstruction.jpg' | relative_url }})
+{: style="width: 100%;" class="center"}
+*Figure 2. Example representing CoCon cycle reconstruction step*
+{:.image-caption} 
+
 **Adversarial loss**
 
-To match the output representation $$y$$ with those of training samples $$x$$, The generator (here the LM with CoCon) is made to train adversarially with a $$f_{disc}$$ network. The experission used follows by the expression from [3] Goodfellow et.al, 2014 
+To match the output representation $$y$$ with those of training samples $$x$$, The generator (here the LM with CoCon) is made to train adversarially with a $$f_{disc}$$ network. The expression used, follows by the GAN Loss from [3] Goodfellow et.al, 2014 
 
 $$
     L_{adv} = \mathbb{E}_{x}[log \ f_{disc}(LM_{\alpha}(x))] + \mathbb{E}_{y}[log \ (1 - f_{disc}(LM_{\alpha}(y)))] \tag{4}
 $$
 
-The $$f_{disc}$$ is initially made to train to maximize the loss so that it can distinguish the two represenation better (Real representation : $$x$$ and generated representation $$y$$). This makes the Generator to output represenation similar to training samples. The $$f_{disc}$$ is parameterized by $$\phi$$ and its training objective is to maximize the the $$L_{adv}$$
+The $$f_{disc}$$ is initially made to train to maximize the loss so that it can distinguish the two representations better (Real representation : $$x$$ and generated representation $$y$$). This makes the Generator output representation similar to training samples. The $$f_{disc}$$ is parameterized by $$\phi$$ and its training objective is to maximize the the $$L_{adv}$$
  
 $$
     \phi^{*} = \underset{\phi}{arg \ max} \ L_{adv}
@@ -226,16 +238,63 @@ This part of the training acts as a method of strengthening the discriminator to
 
 **Full training**
 
-Full training of CoCon block is done by minimizing all the four loss terms through stochastic gradient descent. 
+Full training of the CoCon block is done by minimizing all the four loss terms through stochastic gradient descent. 
 
 $$
     \theta^{*} = \underset{\theta}{arg \ max} (\lambda_{self}L_{self} + \lambda_{null}L_{null} + \lambda_{cycle}L_{cycle} + \lambda_{adv}L_{adv})
 $$
 
-here, the constant $$\lambda$$ can be used to weigh the losses. The loss $$L_{adv}$$ acts as a part of adverserial training where it pushes the CoCon block to generate similar intermediate representation of training input and the generated $$y$$ by minimzing the loss as per eq4.
+Here, the constant $$\lambda$$ can be used to weigh the losses. The loss $$L_{adv}$$ acts as a part of adversarial training where it pushes the CoCon block to generate similar intermediate representation of training input and the generated $$y$$ by minimizing the loss as per eq4 and eventually makes it difficult for $$f_{disc}$$ to distinguish.
 
 ## Results 
-Will be written with the hand crafted examples for foolproofing.
+The experiments on CoCon generated text have been extensively compared against some of the related works on the conditional text generation PPLM (Dathathri et.al 2019) and [6] CTRL (Keskar et.al 2019). 
+
+### CoCon Setup
+The pretrained LM used for CoCon experiments are GPT-2 medium. The $$LM_{\alpha}$$ consists of 7 transformer blocks and the rest (17) blocks 
+comprises $$LM_{\beta}$$. The dimension size of the embeddings in the CoCon block mirrors the pretrained LM and is fixed to 1024. The training samples are of length 30 BPE long segments [(More info on BPE)](https://leimao.github.io/blog/Byte-Pair-Encoding/). $$x_a$$ which is used for training purpose is sampled at 8-12th BPE token and the rest is $$x_b$$.
+
+CoCon text generation is evaluated against these three features : 
+1. Content Similarity
+2. Topic Relevance
+3. Sentiment control 
+
+### Content Similarity. 
+This is used to validate the similarity in the text generation by CoCon against the content input **c** that was provided. Results on several ablation is mentioned in detail in the appendix **A.1** of the paper. 
+
+![CoCon content similarity on different ablation*]({{ '/assets/images/CoCon-2.png' | relative_url }})
+{: style="width: 100%;" class="center"}
+*Figure 2. CoCon content similarity on different ablation*
+{:.image-caption} 
+
+Summary : 
+1. CoCon conditional text generation fares better than vanilla GPT-2 LM. 
+2. Ablated variants (eg : without $$L_{null}$$) do seem to incorporate **c**'s content better than vanilla CoCon with added hurt on perplexity. 
+3. Removing $$L_{adv}$$ as an ablation does seem to improve the perplexity and human evaluation. Authors speculate this due to the presence of non LM loss type for adversarial training. 
+
+### Topic relevance. 
+Topic relevance is evaluated by providing a single token topic word as a content. This has been evaluated against PPLM , CTRL, PPLM-BSR (a stronger PPLM where 10 baseline PPLM are generated and best is chosen based on topic/sentiment) and CoCon+ (GPT output clubbed with a content token fed into CoCon).  
+
+![CoCon topic relevance against other models*]({{ '/assets/images/CoCon-3.png' | relative_url }})
+{: style="width: 100%;" class="center"}
+*Figure 3. CoCon topic relevance against other models*
+{:.image-caption} 
+
+Summary:
+1. All the models do better than Vanilla GPT-2. 
+2. CoCon outperforms other models in its localized topic generation.
+3. Larger variance in other models like PPLM and CTRL in topic relevance as they control high level attributes (sentiment / topic). 
+
+### Sentiment control
+This is used to validate the ability of the CoCon to steer the sentiment from its content input. Content inputs used for steering positive sentiment : *is perfect* and negative sentiment : *is horrible*. The results are compared against previous work (PPLM, CTRL etc.) and the sentiment classifier is trained on the IMDB dataset (Maas et.al).
+
+![CoCon sentiment generation capability against other models*]({{ '/assets/images/CoCon-4.png' | relative_url }})
+{: style="width: 100%;" class="center"}
+*Figure 4. CoCon sentiment generation capability against other models*
+{:.image-caption} 
+
+Summary: 
+1. All models fare better at steering sentiment better than Vanilla GPT-2 models. 
+2. CoCon fares better against other methods in sentiment steering with a slight decrease in perplexity in the process.
 
 ## References
 
@@ -247,5 +306,12 @@ processing systems, pp. 5998–6008, 2017.
 models are unsupervised multitask learners. OpenAI Blog, 1(8):9, 2019 
 
 [3] Ian Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair,
-Aaron Courville, and Yoshua Bengio. Generative adversarial nets. In Advances in neural information processing systems, pp. 2672–2680, 2014.
+Aaron Courville, and Yoshua Bengio. Generative adversarial nets. In Advances in neural information processing systems, pp. 2672–2680, 2014. 
 
+[4] Sumanth Dathathri, Andrea Madotto, Janice Lan, Jane Hung, Eric Frank, Piero Molino, Jason Yosinski, and Rosanne Liu. Plug and play language models: a simple approach to controlled text generation. arXiv preprint arXiv:1912.02164, 2019.
+
+[5] Andrew L. Maas, Raymond E. Daly, Peter T. Pham, Dan Huang, Andrew Y. Ng, and Christopher Potts. (2011). Learning Word Vectors for Sentiment Analysis. The 49th Annual Meeting of the Association for Computational Linguistics (ACL 2011). 
+
+[6] Nitish Shirish Keskar, Bryan McCann, Lav R Varshney, Caiming Xiong, and Richard Socher.
+Ctrl: A conditional transformer language model for controllable generation. arXiv preprint
+arXiv:1909.05858, 2019.
