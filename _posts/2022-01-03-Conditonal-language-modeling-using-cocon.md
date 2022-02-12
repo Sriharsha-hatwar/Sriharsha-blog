@@ -7,7 +7,7 @@ date: 2022-01-03 12:00:00
 tags: Deep-learning nlp short-read
 ---
 
-> In this post I will be discussing about a paper on controlled text generation which was recently accepted at ICLR 2021 main conference track. This post will be removed shortly after the internal review at MLCollective as this will be submitted to ICLR 2022 blog post as conference track.
+> In this post I will be discussing about a paper on controlled text generation which was recently accepted at ICLR 2021 main conference track.
 <!--more-->
 {:class="table-of-content"}
 * TOC
@@ -281,7 +281,7 @@ Summary :
 ### Topic relevance. 
 Topic relevance is evaluated by providing a single token topic word as content. This has been evaluated against PPLM, CTRL, PPLM-BSR (a stronger PPLM where 10 baseline PPLM were generated and the best is chosen based on topic/sentiment), and CoCon+.  CoCon+ has a GPT output on top of a content token fed into CoCon to investigate whether CoCon can simultaneously condition on a target topic and content of a text passage.  
 
-![CoCon topic relevance against other models*]({{ '/public/images/2021-12-18-deep-dive-into-CoCon-text-generation/CoCon-3.png' | relative_url }})
+![CoCon topic relevance against other models*]({{ '/assets/images/CoCon-3.png' | relative_url }})
 {: style="width: 100%;" class="center"}
 *Figure 8. CoCon topic relevance against other models*
 {:.image-caption} 
